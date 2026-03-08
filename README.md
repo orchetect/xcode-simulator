@@ -1,4 +1,4 @@
-# xcode-simulator-setup
+# setup-xcode-simulator
 
 This action is intended to dynamically find the best available pre-installed Xcode device simulator for macOS images in GitHub Actions.
 
@@ -70,7 +70,7 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-    - uses: orchetect/xcode-simulator-setup@main
+    - uses: orchetect/setup-xcode-simulator@main
       with:
         scheme: MySchemeName
         target: iOS
@@ -83,7 +83,7 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-    - uses: orchetect/xcode-simulator-setup@main
+    - uses: orchetect/setup-xcode-simulator@main
       with:
         workspace-path: MyProject/MyProject.xcodeproj/project.xcworkspace
         scheme: MySchemeName
@@ -97,7 +97,7 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-    - uses: orchetect/xcode-simulator-setup@main
+    - uses: orchetect/setup-xcode-simulator@main
       with:
         scheme: MySchemeName
         target: iphone-pro-max
@@ -127,7 +127,7 @@ jobs:
     - uses: actions/checkout@main
     - name: Prepare Device Simulator
       id: sim-setup
-      uses: orchetect/xcode-simulator-setup@main
+      uses: orchetect/setup-xcode-simulator@main
       with:
         refresh: true
         download: true
@@ -179,7 +179,7 @@ jobs:
     - uses: actions/checkout@main
     - name: Prepare Device Simulator
       id: sim-setup
-      uses: orchetect/xcode-simulator-setup@main
+      uses: orchetect/setup-xcode-simulator@main
       with:
         refresh: true
         download: true
@@ -220,15 +220,15 @@ Coded by a bunch of 🐹 hamsters in a trenchcoat that calls itself [@orchetect]
 
 ## License
 
-Licensed under the MIT license. See [LICENSE](https://github.com/orchetect/xcode-simulator-setup/blob/main/LICENSE) for details.
+Licensed under the MIT license. See [LICENSE](https://github.com/orchetect/setup-xcode-simulator/blob/main/LICENSE) for details.
 
 ## Community & Support
 
 Please do not email maintainers for technical support. Several options are available for issues and questions:
 
-- Questions and feature ideas can be posted to [Discussions](https://github.com/orchetect/xcode-simulator-setup/discussions).
-- If an issue is a verifiable bug with reproducible steps it may be posted in [Issues](https://github.com/orchetect/xcode-simulator-setup/issues).
+- Questions and feature ideas can be posted to [Discussions](https://github.com/orchetect/setup-xcode-simulator/discussions).
+- If an issue is a verifiable bug with reproducible steps it may be posted in [Issues](https://github.com/orchetect/setup-xcode-simulator/issues).
 
 ## Contributions
 
-Contributions are welcome. Posting in [Discussions](https://github.com/orchetect/xcode-simulator-setup/discussions) first prior to new submitting PRs for features or modifications is encouraged.
+Contributions are welcome. Posting in [Discussions](https://github.com/orchetect/setup-xcode-simulator/discussions) first prior to new submitting PRs for features or modifications is encouraged.

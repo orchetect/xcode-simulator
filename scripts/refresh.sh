@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # refresh.sh
-# xcode-simulator-setup • https://github.com/orchetect/xcode-simulator-setup
+# setup-xcode-simulator • https://github.com/orchetect/setup-xcode-simulator
 # © 2026 Steffan Andrews • Licensed under MIT License
 
 # Workaround for Xcode/GitHub runner issues finding simulators.

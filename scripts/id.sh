@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # id.sh
-# xcode-simulator-setup • https://github.com/orchetect/xcode-simulator-setup
+# setup-xcode-simulator • https://github.com/orchetect/setup-xcode-simulator
 # © 2026 Steffan Andrews • Licensed under MIT License
 
 # Note that GitHub Actions DO NOT USE THE ZSH SHELL, YOU MUST USE BASH (still as of Mar 2026).

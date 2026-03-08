@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # download.sh
-# xcode-simulator-setup • https://github.com/orchetect/xcode-simulator-setup
+# setup-xcode-simulator • https://github.com/orchetect/setup-xcode-simulator
 # © 2026 Steffan Andrews • Licensed under MIT License
 
-# xcode-simulator-setup
+# setup-xcode-simulator
 
 # Workaround for Xcode/GitHub runner issues finding simulators.
 # see https://github.com/actions/runner-images/issues/12758#issuecomment-3206748945
