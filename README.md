@@ -106,6 +106,8 @@ jobs:
 
 ## Complete Examples
 
+### Build and Test a Swift Package for iOS
+
 Prepare an iOS device simulator (defaults to iPhone) using the latest device and operating system version in order to test a Swift Package. Beforehand, refresh simulators and download an appropriate simulator if one is not yet installed.
 
 > [!TIP]
@@ -131,6 +133,58 @@ jobs:
         download: true
         scheme: ${{ env.SCHEME }}
         target: iOS
+    - name: Build
+      run: |
+        xcodebuild build \
+          -workspace "$WORKSPACEPATH" \
+          -scheme "$SCHEME" \
+          -destination "generic/platform=$PLATFORMSHORT"
+      env:
+        PLATFORMSHORT: ${{ steps.prep-sim.outputs.platform-short }}
+        WORKSPACEPATH: ${{ steps.prep-sim.outputs.workspace-path }}
+    - name: Unit Test
+      run: |
+        xcodebuild test \
+          -workspace "$WORKSPACEPATH" \
+          -scheme "$SCHEME" \
+          -destination "platform=$PLATFORM,id=$ID"
+      env:
+        ID: ${{ steps.prep-sim.outputs.id }}        
+        PLATFORM: ${{ steps.prep-sim.outputs.platform }}
+        WORKSPACEPATH: ${{ steps.prep-sim.outputs.workspace-path }}
+```
+
+### Build and Test a Swift Package for Multiple Platforms
+
+Set up a matrix of jobs for iOS, tvOS, watchOS and visionOS to prepare a device simulator  using the latest device and operating system version in order to test a Swift Package. Beforehand, refresh simulators and download an appropriate simulator if one is not yet installed.
+
+> [!TIP] 
+>
+> Separating the build and test phases into separate steps is recommended for organization and clarity.
+>
+> Building (unlike testing) typically does not require a simulator destination and a generic destination can be supplied.
+
+```yaml
+env:
+  SCHEME: "MySchemeName"
+  
+jobs:
+  build:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        target: [iOS, tvOS, watchOS, visionOS]
+    continue-on-error: true
+    steps:
+    - uses: actions/checkout@main
+    - name: Prepare Device Simulator
+      id: prep-sim
+      uses: orchetect/xcode-simulator@main
+      with:
+        refresh: true
+        download: true
+        scheme: ${{ env.SCHEME }}
+        target: ${{ matrix.target }}
     - name: Build
       run: |
         xcodebuild build \
