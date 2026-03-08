@@ -210,10 +210,6 @@ jobs:
 
 This README serves as basic documentation.
 
-## Roadmap
-
-After a period of testing in various repositories, version 1 will be released.
-
 ## Author
 
 Coded by a bunch of 🐹 hamsters in a trenchcoat that calls itself [@orchetect](https://github.com/orchetect).
