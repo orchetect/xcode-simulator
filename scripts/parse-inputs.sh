@@ -101,16 +101,16 @@ case $INPUT_TARGET_LOWERCASE in
     SIMDEVICE_REGEX="iPad\sAir"
     ;;
   
-  ipad-pro)
-    SIMPLATFORM="iOS"
-    SIMPLATFORM_REGEX="iOS"
-    SIMDEVICE_REGEX="iPad\sPro"
-    ;;
-  
   ipad-mini)
     SIMPLATFORM="iOS"
     SIMPLATFORM_REGEX="iOS"
     SIMDEVICE_REGEX="iPad\smini"
+    ;;
+  
+  ipad-pro)
+    SIMPLATFORM="iOS"
+    SIMPLATFORM_REGEX="iOS"
+    SIMDEVICE_REGEX="iPad\sPro"
     ;;
   
   tv)

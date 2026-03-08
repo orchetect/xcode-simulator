@@ -11,7 +11,7 @@ inputs:
     required: false
     default: false
   workspace-path:
-    description: 'Relative path to the Xcode workspace. If the target is a Swift Package that exists in the root of the repository, omit this variable.'
+    description: 'Relative path to the Xcode workspace. If the target is a Swift Package that exists in the root of the repository, omit this parameter.'
     required: false
   scheme:
     description: 'Xcode scheme name that will be used when enumerating available device simulators.'
