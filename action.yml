@@ -22,10 +22,12 @@ inputs:
   os-version:
     description: 'Platform OS version regular expression. (Optional)'
     required: false
+
 outputs:
   id:
     description: "Simulator ID"
     value: ${{ steps.id-finder.outputs.id }}
+
 runs:
   using: "composite"
   steps:
@@ -55,7 +57,7 @@ runs:
       
     # Workaround for Xcode/GitHub runner issues finding simulators.
     # see https://github.com/actions/runner-images/issues/12758#issuecomment-3206748945
-    - Download Simulator for Platform
+    - name: Download Simulator for Platform
       run: xcodebuild -downloadPlatform "$SIMPLATFORM"
       shell: bash
       if: inputs.download == 'true'
@@ -64,6 +66,7 @@ runs:
         
     - name: Find Simulator ID
       id: id-finder
+      needs: [parse-inputs]
       run: ./scripts/id.sh
       shell: bash
       env:
@@ -73,6 +76,7 @@ runs:
         SIMPLATFORM_REGEX: ${{ steps.parse-inputs.outputs.parsed-platform-regex }}
         SIMDEVICE_REGEX: ${{ steps.parse-inputs.outputs.parsed-device-regex }}
         OSVERSION_REGEX: ${{ steps.parse-inputs.outputs.parsed-os-version-regex }}
+
 branding:
   icon: 'code'
   color: 'blue'
