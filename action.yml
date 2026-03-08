@@ -56,10 +56,12 @@ runs:
     # Workaround for Xcode/GitHub runner issues finding simulators.
     # see https://github.com/actions/runner-images/issues/12758#issuecomment-3206748945
     - Download Simulator for Platform
-      run: xcodebuild -downloadPlatform ${{ steps.interpret-target.outputs.SIMPLATFORM }}
+      run: xcodebuild -downloadPlatform "$SIMPLATFORM"
       shell: bash
       if: inputs.download == 'true'
-      
+      env:
+        SIMPLATFORM: ${{ steps.parse-inputs.outputs.parsed-platform }}
+        
     - name: Find Simulator ID
       id: id-finder
       run: ./scripts/id.sh
