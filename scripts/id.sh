@@ -52,10 +52,10 @@ else
 fi
 
 # Exit out if no simulators matched the criteria.
-if [[ -z $DESTID ]]; then echo "Error: No matching simulators available."; exit 1; fi
+if [[ -z $DESTID ]]; then echo "⛔️ Error: No matching simulators available."; exit 1; fi
 
 # Provide diagnostic output of selected devince simulator info.
-echo "Found device simulator: $DESTDESC"
+echo "🟢 Found device simulator: $DESTDESC"
 
 # Set output variable.
 echo "id=$(echo $DESTID)" >> $GITHUB_OUTPUT

@@ -34,8 +34,8 @@ echo "Using Xcode scheme: $SCHEME"
 # Setup OS version.
 OSVERSION_REGEX="$INPUT_OSVERSION"
 
-# Provide diagnostic output of OS version.
-echo "Using OS version regex: $OSVERSION_REGEX"
+# Provide diagnostic output of OS version, but only if it's a non-empty string.
+if [[ -n $OSVERSION_REGEX ]]; then echo "Using OS version regex: $OSVERSION_REGEX"; fi
 
 # Interpret platform and device criteria from input target identifier.
 # Convert target to lowercase to enable "case-insensitive" matching.
@@ -163,7 +163,7 @@ case $INPUT_TARGET_LOWERCASE in
   
   *)
     # Check for empty string
-    if [[ -z $INPUT_TARGET ]]; then echo "Error: No target specified."; exit 1; fi
+    if [[ -z $INPUT_TARGET ]]; then echo "⛔️ Error: No target specified."; exit 1; fi
     
     # Otherwise, use target string as device name regex.
     SIMDEVICE_REGEX="$INPUT_TARGET"

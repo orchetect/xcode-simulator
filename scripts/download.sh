@@ -10,10 +10,8 @@
 # (none)
 
 echo "Downloading simulator if needed..."
-echo ""
 
 # Capture output so it doesn't spam the console. In future this can optionally be printed to the console.
 LOG=$(xcodebuild -downloadPlatform "$SIMPLATFORM")
 
 echo "Done downloading simulator."
-echo ""
