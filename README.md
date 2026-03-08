@@ -126,7 +126,7 @@ jobs:
     steps:
     - uses: actions/checkout@main
     - name: Prepare Device Simulator
-      id: prep-sim
+      id: sim-setup
       uses: orchetect/xcode-simulator-setup@main
       with:
         refresh: true
@@ -140,8 +140,8 @@ jobs:
           -scheme "$SCHEME" \
           -destination "generic/platform=$PLATFORMSHORT"
       env:
-        PLATFORMSHORT: ${{ steps.prep-sim.outputs.platform-short }}
-        WORKSPACEPATH: ${{ steps.prep-sim.outputs.workspace-path }}
+        PLATFORMSHORT: ${{ steps.sim-setup.outputs.platform-short }}
+        WORKSPACEPATH: ${{ steps.sim-setup.outputs.workspace-path }}
     - name: Unit Test
       run: |
         xcodebuild test \
@@ -149,9 +149,9 @@ jobs:
           -scheme "$SCHEME" \
           -destination "platform=$PLATFORM,id=$ID"
       env:
-        ID: ${{ steps.prep-sim.outputs.id }}        
-        PLATFORM: ${{ steps.prep-sim.outputs.platform }}
-        WORKSPACEPATH: ${{ steps.prep-sim.outputs.workspace-path }}
+        ID: ${{ steps.sim-setup.outputs.id }}        
+        PLATFORM: ${{ steps.sim-setup.outputs.platform }}
+        WORKSPACEPATH: ${{ steps.sim-setup.outputs.workspace-path }}
 ```
 
 ### Build and Test a Swift Package for Multiple Platforms
@@ -178,7 +178,7 @@ jobs:
     steps:
     - uses: actions/checkout@main
     - name: Prepare Device Simulator
-      id: prep-sim
+      id: sim-setup
       uses: orchetect/xcode-simulator-setup@main
       with:
         refresh: true
@@ -192,8 +192,8 @@ jobs:
           -scheme "$SCHEME" \
           -destination "generic/platform=$PLATFORMSHORT"
       env:
-        PLATFORMSHORT: ${{ steps.prep-sim.outputs.platform-short }}
-        WORKSPACEPATH: ${{ steps.prep-sim.outputs.workspace-path }}
+        PLATFORMSHORT: ${{ steps.sim-setup.outputs.platform-short }}
+        WORKSPACEPATH: ${{ steps.sim-setup.outputs.workspace-path }}
     - name: Unit Test
       run: |
         xcodebuild test \
@@ -201,9 +201,9 @@ jobs:
           -scheme "$SCHEME" \
           -destination "platform=$PLATFORM,id=$ID"
       env:
-        ID: ${{ steps.prep-sim.outputs.id }}        
-        PLATFORM: ${{ steps.prep-sim.outputs.platform }}
-        WORKSPACEPATH: ${{ steps.prep-sim.outputs.workspace-path }}
+        ID: ${{ steps.sim-setup.outputs.id }}        
+        PLATFORM: ${{ steps.sim-setup.outputs.platform }}
+        WORKSPACEPATH: ${{ steps.sim-setup.outputs.workspace-path }}
 ```
 
 ## Documentation
