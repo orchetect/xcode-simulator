@@ -2,18 +2,17 @@ name: 'Xcode Simulator Selector'
 author: 'Steffan Andrews'
 description: 'Dynamically find the best available Xcode device simulator.'
 inputs:
+  workspace-path:
+    description: 'Relative path to the Xcode workspace. If the target is a Swift Package that exists in the root of the repository, omit this variable.'
+    required: false
   scheme:
     description: 'Xcode scheme name that will be used when enumerating available device simulators.'
     required: true
-  platform:
-    description: 'Platform (iOS, tvOS, watchOS, visionOS).'
+  target:
+    description: 'Platform (iOS, tvOS, watchOS, visionOS) device (iphone, ipad, watch, appletv, visionpro). See README for more options.'
     required: true
-  device:
-    description: 'Device (iphone, ipad, watch, appletv, visionpro, default).'
-    required: false
-    default: default
-  os:
-    description: 'Platform OS version.'
+  os-version:
+    description: 'Platform OS version regular expression. (Optional)'
     required: false
 outputs:
   id:
@@ -27,10 +26,10 @@ runs:
       run: scripts/id.sh
       shell: bash
       env:
-        SCHEME: ${{ inputs.scheme }}
-        SIMPLATFORM: ${{ inputs.platform }}
-        SIMDEVICE: ${{ inputs.device }}
-        SIMOS: ${{ inputs.os }}
+        INPUT_WORKSPACEPATH: ${{ inputs.workspace-path }}
+        INPUT_SCHEME: ${{ inputs.scheme }}
+        INPUT_TARGET: ${{ inputs.target }}
+        INPUT_OSVERSION: ${{ inputs.os-version }}
 branding:
   icon: 'code'
   color: 'blue'
