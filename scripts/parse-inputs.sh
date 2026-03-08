@@ -51,7 +51,7 @@ case $INPUT_TARGET_LOWERCASE in
   tvos)
     SIMPLATFORM_SHORT="tvOS"
     SIMPLATFORM_REGEX="tvOS"
-    SIMDEVICE_REGEX="AppleTV"
+    SIMDEVICE_REGEX="Apple\sTV"
     ;;
 
   watchos)
