@@ -23,6 +23,8 @@
 # Note that validation of variables is skipped in this script, as validation already occurred
 # in the action step that runs parse-inputs.sh.
 
+echo "Finding matching device simulator..."
+
 # Get full list of all available device simulators installed in the system that are applicable for the given Xcode scheme.
 XCODE_OUTPUT=$(xcodebuild -showdestinations -workspace "$WORKSPACEPATH" -scheme "$SCHEME")
 XCODE_OUTPUT_REGEX="m/\{\splatform:(.*\sSimulator),.*id:([A-F0-9\-]{36}),.*OS:(\d{1,2}\.\d),.*name:([a-zA-Z0-9\(\)\s]*)\s\}/g"

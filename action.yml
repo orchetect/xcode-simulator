@@ -34,16 +34,15 @@ runs:
     # Workaround for Xcode/GitHub runner issues finding simulators.
     # see https://github.com/actions/runner-images/issues/12758#issuecomment-3206748945
     - name: Refresh Simulators
-      run: Refresh Simulators |
-        echo "Refreshing simulators...\n"
-        LIST=$(xcrun simctl list)
+      run: $GITHUB_ACTION_PATH/scripts/refresh.sh
       shell: bash
       if: inputs.refresh == 'true'
+      env:
+        GITHUB_ACTION_PATH: ${{ github.action_path }}
     
     - name: Parse Inputs
       id: parse-inputs
-      run: Parse Inputs |
-        "$GITHUB_ACTION_PATH/scripts/parse-inputs.sh"
+      run: $GITHUB_ACTION_PATH/scripts/parse-inputs.sh
       shell: bash
       env:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
@@ -62,19 +61,16 @@ runs:
     # Workaround for Xcode/GitHub runner issues finding simulators.
     # see https://github.com/actions/runner-images/issues/12758#issuecomment-3206748945
     - name: Download Simulator for Platform
-      run: Download Simulator for Platform |
-        echo "Downloading simulator if needed...\n"
-        LOG=$(xcodebuild -downloadPlatform "$SIMPLATFORM")
+      run: $GITHUB_ACTION_PATH/scripts/download.sh
       shell: bash
       if: inputs.download == 'true'
       env:
+        GITHUB_ACTION_PATH: ${{ github.action_path }}
         SIMPLATFORM: ${{ steps.parse-inputs.outputs.parsed-platform }}
         
     - name: Find Simulator ID
       id: id-finder
-      run: Find Simulator ID |
-        echo "Finding matching device simulator..."
-        "$GITHUB_ACTION_PATH/scripts/id.sh"
+      run: $GITHUB_ACTION_PATH/scripts/id.sh
       shell: bash
       env:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
