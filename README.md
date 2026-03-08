@@ -106,7 +106,7 @@ jobs:
 
 ## Complete Examples
 
-Prepare an iOS device simulator (defaults to iPhone) using the latest device and operating system version in order to test a Swift Package:
+Prepare an iOS device simulator (defaults to iPhone) using the latest device and operating system version in order to test a Swift Package. Beforehand, refresh simulators and download an appropriate simulator if one is not yet installed.
 
 > [!TIP]
 >
