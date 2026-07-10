@@ -198,9 +198,9 @@ jobs:
   build:
     runs-on: macos-latest
     strategy:
+      fail-fast: false
       matrix:
         target: [iOS, tvOS, watchOS, visionOS]
-    continue-on-error: true
     steps:
     - uses: actions/checkout@main
     - name: Prepare Device Simulator
